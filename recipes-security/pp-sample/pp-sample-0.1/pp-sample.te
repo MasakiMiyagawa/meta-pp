@@ -1,0 +1,16 @@
+policy_module(pp-sample, 1.2.0)
+
+require {
+	attribute domain;
+	attribute file_type;
+	attribute exec_type;
+	role system_r;
+	type getty_t;
+}
+
+type pp-sample_t, domain;
+type pp-sample_exec_t, file_type, exec_type;
+
+role system_r types pp-sample_t;
+domain_auto_trans(getty_t, pp-sample_exec_t, pp-sample_t)
+
